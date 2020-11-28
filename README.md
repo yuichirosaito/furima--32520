@@ -1,24 +1,63 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column    | Type   | Options     |
+| --------  | ------ | ----------- |
+| email     | string | null: false |
+| password  | string | null: false |
+| nickname  | string | null: false |
+| last_name | string | null: false |
+| first_name| string | null: false |
+| birthday  | string | null: false |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :items
+- belongs_to :address
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column            | Type    | Options     |
+| --------          | ------  | ----------- |
+| item_name         | string  | null: false |
+| item_explaination | text    | null: false |
+| item_category     | string  | null: false |
+| item_status       | string  | null: false |
+| item_price        | interger| null: false |
+| delivery_fee      | string  | null: false |
+| delivery_area     | string  | null: false |
+| delivery_span     | string  | null: false |
 
-* Database creation
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- belongs_to :address
+- has_one :purchase
 
-* Services (job queues, cache servers, search engines, etc.)
+## address テーブル
 
-* Deployment instructions
+| Column      | Type    | Options     |
+| --------    | ------  | ----------- |
+| postal_code | string  | null: false |
+| prefecture  | string  | null: false |
+| city        | string  | null: false |
+| block       | string  | null: false |
+| building    | string  |             |
+| phone_number| string  | null: false |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## purchases テーブル
+
+| Column         | Type      | Options     |
+| --------       | ------    | ----------- |
+| card_number    | text      | null: false |
+| expiration_date| references| null: false |
+| security_code  | references| null: false |
+
+### Association
+
+- belongs_to :item
