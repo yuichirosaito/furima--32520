@@ -28,7 +28,7 @@
 | delivery_fee_id | integer | null: false |
 | delivery_area_id| integer | null: false |
 | delivery_span_id| integer | null: false |
-| uer_id          |reference| null: false, foreign_key: true  |
+| user            |reference| null: false, foreign_key: true  |
 
 
 ### Association
@@ -55,11 +55,11 @@
 
 | Column  | Type     | Options     |
 | --------| ------   | ----------- |
-| user_id | reference| null: false, foreign_key: true |
-| item_id | reference| null: false, foreign_key: true |
+| user    | reference| null: false, foreign_key: true |
+| item    | reference| null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :address
+- has_one    :address
