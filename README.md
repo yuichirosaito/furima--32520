@@ -9,12 +9,12 @@
 | first_name        | string | null: false              |
 | last_name_kana    | string | null: false              |
 | first_name_kana   | string | null: false              |
-| birthday          | string | null: false              |
-| user_id           | integer| null: false              |
+| birthday          | date   | null: false              |          
 
 ### Association
 
 - has_many :items
+- has_many :purchases
 
 ## items テーブル
 
@@ -22,12 +22,13 @@
 | --------        | ------  | ----------- |
 | name            | string  | null: false |
 | explaination    | text    | null: false |
-| category        | string  | null: false |
+| category_id     | integer | null: false |
 | status_id       | integer | null: false |
 | price           | interger| null: false |
 | delivery_fee_id | integer | null: false |
 | delivery_area_id| integer | null: false |
 | delivery_span_id| integer | null: false |
+| uer_id          |reference| null: false, foreign_key: true  |
 
 
 ### Association
@@ -39,7 +40,7 @@
 
 | Column         | Type    | Options     |
 | --------       | ------  | ----------- |
-| postal_code_id | integer | null: false |
+| postal_code    | string  | null: false |
 | prefecture_id  | integer | null: false |
 | city           | string  | null: false |
 | block          | string  | null: false |
@@ -48,17 +49,17 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
 - has_one :purchase
 
 ## purchases テーブル
 
 | Column  | Type     | Options     |
 | --------| ------   | ----------- |
-| who     | string   | null: false |
-| what    | string   | null: false |
+| user_id | reference| null: false, foreign_key: true |
+| item_id | reference| null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
+- belongs_to :user
+- belongs_to :address
