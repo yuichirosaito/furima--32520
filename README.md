@@ -34,7 +34,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- belongs_to :purchase
 
 ## address テーブル
 
@@ -46,6 +46,7 @@
 | block          | string  | null: false |
 | building       | string  |             |
 | phone_number   | string  | null: false |
+| purchase       | reference| null: false, foreign_key: true|
 
 ### Association
 
