@@ -3,9 +3,9 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :deliveryarea
-  belongs_to :deliveryfee
-  belongs_to :deliveryspan
+  belongs_to :delivery_area
+  belongs_to :delivery_fee
+  belongs_to :delivery_span
   belongs_to :status
   has_one_attached :image
   with_options presence: true do
