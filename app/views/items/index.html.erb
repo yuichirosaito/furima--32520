@@ -121,6 +121,7 @@
   <%# /FURIMAの特徴 %>
 
   <%# 商品一覧 %>
+ <% if @items.present?  %> 
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
@@ -145,11 +146,7 @@
           </h3>
           <div class='item-price'>
             <span><%= item.price %>円<br>
-            <%= if item.delivery_fee_id == 2 
-                "出品者負担"
-                else 
-                "購入者負担"
-                end %></span>
+            <%= item.delivery_fee.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -161,11 +158,11 @@
 
 
       <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
-    <%#<li class='list'>
+      <% else %>
+       <li class='list'>
         <%= link_to '#' do %>
-        <%#<%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
-        <%#<div class='item-info'>
+        <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
+        <div class='item-info'>
           <h3 class='item-name'>
             商品を出品してね！
           </h3>
@@ -173,14 +170,13 @@
             <span>99999999円<br>(税込み)</span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
-             <%# <span class='star-count'>0</span>
+             <span class='star-count'>0</span>
             </div>
           </div>
         </div>
         <% end %>
-      <%#</li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# /商品がない場合のダミー %>
+       </li>
+       <% end %>
     </ul>
   </div>
   <%# /商品一覧 %>
