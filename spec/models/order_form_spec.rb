@@ -44,12 +44,6 @@ RSpec.describe OrderForm, type: :model do
           expect(@order_form.errors.full_messages).to include("Block can't be blank")
         end
 
-        it 'buildingが空では登録できないこと' do
-          @order_form.building = ''
-          @order_form.valid?
-          expect(@order_form.errors.full_messages).to include("Building can't be blank")
-        end
-
         it 'phone_numberが空では登録できないこと' do
           @order_form.phone_number = ''
           @order_form.valid?
