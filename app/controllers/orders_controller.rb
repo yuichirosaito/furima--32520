@@ -9,11 +9,7 @@ class OrdersController < ApplicationController
       if current_user.id == @item.user_id
         redirect_to root_path
       end  
-      if user_signed_in?
       @order_form = OrderForm.new
-      else
-        redirect_to  new_user_session_path
-      end  
     end
    
     def create  

@@ -50,8 +50,14 @@ RSpec.describe OrderForm, type: :model do
           expect(@order_form.errors.full_messages).to include("Phone number can't be blank")
         end
 
-        it "電話番号にはハイフンは不要で、11桁以内であること" do
+        it "電話番号にはハイフンは不要あること" do
           @order_form.phone_number = "000-000-000000"
+          @order_form.valid?
+          expect(@order_form.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        end
+
+        it "電話番号は11桁以内であること" do
+          @order_form.phone_number = "000000000000"
           @order_form.valid?
           expect(@order_form.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
         end
