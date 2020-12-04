@@ -36,7 +36,7 @@
 - belongs_to :user
 - belongs_to :purchase
 
-## address テーブル
+## orders テーブル
 
 | Column         | Type    | Options     |
 | --------       | ------  | ----------- |
