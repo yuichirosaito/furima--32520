@@ -16,6 +16,7 @@
 - has_many :items
 - has_many :purchases
 
+
 ## items テーブル
 
 | Column          | Type    | Options     |
